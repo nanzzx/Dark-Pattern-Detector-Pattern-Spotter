@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "THE PATTERN SPOTTER",
+  "version": "0.0.1",
+  "description": "Highlight the deceptive UI DARK PATTERNS on E-commerce websites with additional ad-block feature which make sure safe and aware shopping experience.",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "declarativeNetRequest"
+  ],
+  "declarative_net_request":{
+    "rule_resources":[
+      {
+        "id":"ruleset_1",
+        "enabled":true,
+        "path":"rules.json"
+      }
+    ]
+  },
+  "background": {"service_worker":"background.js"},
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  }
+
+}
